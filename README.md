@@ -20,4 +20,6 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 
-https://codepen.io/s-ammar/pen/JOYdje
+## Links
+
+used to generate the Javascript with minor modifications https://codepen.io/s-ammar/pen/JOYdje
