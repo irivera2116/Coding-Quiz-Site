@@ -94,7 +94,7 @@ var all_questions = [{
           break;
         }
       }
-      $('#submit-button').prop('disabled', !all_questions_answered);
+      $('#submit-button').prop('enable', !all_questions_answered);
     }
     
     // Render the first question
@@ -125,14 +125,25 @@ var all_questions = [{
         if (self.questions[i].user_choice_index === self.questions[i].correct_choice_index) {
           score++;
         }
+      };
+    
         
      $('#quiz-retry-button').click(function(reset) {
-        quiz.render(quiz_container);
-     });
+      current_question_index = 0;
+      var quiz = new Quiz('My Quiz');
+        // Create Question objects from all_questions and add them to the Quiz object
+        for (var i = 0; i < all_questions.length; i++) {
+          // Create a new Question object
+          var question = new Question(all_questions[i].question_string, all_questions[i].choices.correct, all_questions[i].choices.wrong);
+          
+          // Add the question to the instance of the Quiz object that we created previously
+          quiz.add_question(question);
+     };
+     var quiz_container = $('#quiz');
+     quiz.render(quiz_container);
+      });
+
       
-      }
-      
-     
       
       // Display the score with the appropriate message
       var percentage = score / self.questions.length;
@@ -153,7 +164,7 @@ var all_questions = [{
       $('#submit-button').slideUp();
       $('#next-question-button').slideUp();
       $('#prev-question-button').slideUp();
-      $('#quiz-retry-button').sideDown();
+      $('#quiz-retry-button').slideDown();
       
     });
     
